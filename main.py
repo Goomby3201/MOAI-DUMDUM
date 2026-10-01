@@ -3,6 +3,7 @@ from game import Game
 from jobs import do_job
 from endings import check_endings
 from save import save_game, load_game
+from achievements import unlock_achievement, show_achievements, register_ending
 
 
 game = load_game()
@@ -60,12 +61,21 @@ while True:
 
         if player.buy_gum_gum(amount, price):
             print(f"{amount} Gum-Gum gekauft.")
+
+            unlock_achievement)("first_gum")
+
+            if amount >= 100:
+                unlock_achievement("bulk_buyer")
         else:
             print("Nicht genug Geld.")
     
     elif choice == "3":
         if game.feed_moai():
             print("Dum-Dum bekommt Gum-Gum. 🗿")
+            unlock_achievement("first_moai")
+
+            if game.alive_moai_count() >= 1000:
+                unlock_achievement("1000_moai")
         else:
             print("Du hast kein Gum-Gum.")
 
@@ -74,6 +84,7 @@ while True:
 
         if game.destroy_moai(moai_id):
             print(f"Moai #{moai_id} wurde zerstört.")
+            unlock_achievement("first_destruction")
         else:
             print("Dieser Moai existiert nicht oder ist bereits zerstört.")
 
@@ -98,6 +109,8 @@ while True:
     ending = check_endings(game)
 
     if ending:
+        register_ending(ending)
+
         print()
         print("=== ENDING ===")
         print(ending)
