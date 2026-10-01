@@ -7,6 +7,13 @@ game = Game(player)
 
 print("DUM-DUM: GUM-GUM")
 print()
-print(f"Name: {player.name}")
+
 print(f"Geld: ${player.money}")
-print(f"Moai: {game.moai_count}")
+
+if player.buy_gum_gum(2):
+    print("Du hast 2 Gum-Gum gekauft!")
+else:
+    print("Du hast nicht genug Geld")
+
+print(f"Geld: ${player.money}")
+print(f"Gum-Gum: {player.gum_gum}")
