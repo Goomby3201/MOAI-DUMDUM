@@ -1,6 +1,7 @@
 from player import Player
 from game import Game
 from jobs import do_job
+from endings import check_endings
 
 
 player = Player("Larry")
@@ -72,3 +73,11 @@ while True:
 
     else:
         print("Ungültige Auswahl.")
+
+    ending = check_endings(game)
+
+    if ending:
+        print()
+        print("=== ENDING ===")
+        print(ending)
+        break
