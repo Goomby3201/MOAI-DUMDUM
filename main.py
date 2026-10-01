@@ -5,6 +5,8 @@ from game import Game
 player = Player("Larry")
 game = Game(player)
 
-print(f"Willkommen, {player.name}!")
+print("DUM-DUM: GUM-GUM")
+print()
+print(f"Name: {player.name}")
 print(f"Geld: ${player.money}")
 print(f"Moai: {game.moai_count}")
