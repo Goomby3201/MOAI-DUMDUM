@@ -3,7 +3,12 @@ from game import Game
 from jobs import do_job
 from endings import check_endings
 from save import save_game, load_game
-from achievements import unlock_achievement, show_achievements, register_ending
+from achievements import (
+    unlock_achievement,
+    check_achievements,
+    register_ending,
+    show_achievements
+)
 
 
 game = load_game()
@@ -32,7 +37,8 @@ while True:
     print("4. Moai zerstören")
     print("5. Speichern")
     print("6. Laden")
-    print("7. Beenden")
+    print("7. Achievements")
+    print("8. Beenden")
 
     choice = input("> ")
 
@@ -66,6 +72,11 @@ while True:
 
             if amount >= 100:
                 unlock_achievement("bulk_buyer")
+
+            if player.money == 0:
+                unlock_achievement("bad_investment")
+
+            check_achievements(game)
         else:
             print("Nicht genug Geld.")
     
@@ -73,9 +84,7 @@ while True:
         if game.feed_moai():
             print("Dum-Dum bekommt Gum-Gum. 🗿")
             unlock_achievement("first_moai")
-
-            if game.alive_moai_count() >= 1000:
-                unlock_achievement("1000_moai")
+            check_achievements(game)
         else:
             print("Du hast kein Gum-Gum.")
 
@@ -84,7 +93,9 @@ while True:
 
         if game.destroy_moai(moai_id):
             print(f"Moai #{moai_id} wurde zerstört.")
+            
             unlock_achievement("first_destruction")
+            check_achievements(game)
         else:
             print("Dieser Moai existiert nicht oder ist bereits zerstört.")
 
@@ -103,6 +114,9 @@ while True:
             print("Spielstand geladen!")
 
     elif choice == "7":
+        show_achievements()
+
+    elif choice == "8"
         print("DUM-DUM REMAINS.")
         break
 
