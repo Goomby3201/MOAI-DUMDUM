@@ -122,18 +122,18 @@ def check_achievements(game):
     player = game.player
     moai_count = game.alive_moai_count()
 
-    # Geld
     if player.money == 0:
         unlock_achievement("poor_larry")
 
     if player.money == 1:
         unlock_achievement("almost_broke")
 
-    # Gum-Gum
     if player.gum_gum >= 100:
         unlock_achievement("gum_gum_hoarder")
 
-    # Moai
+    if player.gum_gum >= 420:
+        unlock_achievement("gum_gum_overdose")
+
     if moai_count >= 100:
         unlock_achievement("moai_100")
 
@@ -142,6 +142,21 @@ def check_achievements(game):
 
     if moai_count >= 1000:
         unlock_achievement("1000_moai")
+
+    if game.jobs_done >= 20:
+        unlock_achievement("minimum_wage")
+
+    if game.moai_destroyed >= 10:
+        unlock_achievement("stone_cold")
+
+    if game.moai_destroyed >= 50:
+        unlock_achievement("clean_up_crew")
+
+    if game.moai_destroyed >= 100:
+        unlock_achievement("stone_cold_2")
+
+    if game.saves >= 10:
+        unlock_achievement("git_git")
 
 
 def register_ending(ending):

@@ -51,11 +51,16 @@ while True:
         job_choice = input("> ")
 
         if job_choice == "1":
-            do_job(player, "museum")
+            if do_job(player, "museum"):
+                game.jobs_done += 1
+
         elif job_choice == "2":
-            do_job(player, "kisten")
+            if do_job(player, "kisten"):
+                game.jobs_done += 1
+
         elif job_choice == "3":
-            do_job(player, "nacht")
+            if do_job(player, "nacht"):
+                game.jobs_done += 1
         else:
             print("Ungültiger Job.")
 
@@ -66,9 +71,11 @@ while True:
         amount = int(input("Wie viele? "))
 
         if player.buy_gum_gum(amount, price):
+            game.gum_gum_bought += amount
+
             print(f"{amount} Gum-Gum gekauft.")
 
-            unlock_achievement)("first_gum")
+            unlock_achievement("first_gum")
 
             if amount >= 100:
                 unlock_achievement("bulk_buyer")
@@ -92,6 +99,8 @@ while True:
         moai_id = int(input("Welchen Moai zerstören? "))
 
         if game.destroy_moai(moai_id):
+            game.moai_destroyed += 1
+
             print(f"Moai #{moai_id} wurde zerstört.")
             
             unlock_achievement("first_destruction")
@@ -100,7 +109,9 @@ while True:
             print("Dieser Moai existiert nicht oder ist bereits zerstört.")
 
     elif choice == "5":
+        game.saves += 1
         save_game(game)
+        check_achievements(game)
         print("Spiel gespeichert!")
 
     elif choice == "6":
@@ -116,7 +127,7 @@ while True:
     elif choice == "7":
         show_achievements()
 
-    elif choice == "8"
+    elif choice == "8":
         print("DUM-DUM REMAINS.")
         break
 
