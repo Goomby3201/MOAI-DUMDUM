@@ -1,18 +1,13 @@
 from player import Player
 from game import Game
+from jobs import do_job
 
 
 player = Player("Larry")
 game = Game(player)
 
-player.money = 50
-player.buy_gum_gum(3)
+print(f"Geld vorher: ${player.money}")
 
-for _ in range(3):
-    game.feed_moai()
+do_job(player, "museum")
 
-print(f"Moai: {len(game.moai)}")
-
-game.destroy_moai(1)
-
-print(f"Moai #1 alive: {game.moai[0].alive}")
+print(f"Geld nach dem Job: ${player.money}")

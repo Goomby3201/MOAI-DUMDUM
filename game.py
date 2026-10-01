@@ -30,3 +30,6 @@ class Game:
                 return True
 
         return False
+
+    def alive_moai_count(self):
+        return sum(1 for moai in self.moai if moai.alive)
