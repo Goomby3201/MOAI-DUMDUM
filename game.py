@@ -33,3 +33,20 @@ class Game:
 
     def alive_moai_count(self):
         return sum(1 for moai in self.moai if moai.alive)
+
+    def get_gum_price(self):
+        return 5 + self.alive_moai_count() - 1
+
+    def get_region(self):
+        if self.world_control < 20:
+            return "Museum"
+        elif self.world_control < 40:
+            return "Stadt"
+        elif self.world_control < 60:
+            return "Land"
+        elif self.world_control < 80:
+            return "Kontinent"
+        elif self.world_control < 100:
+            return "Welt"
+        else:
+            return "MOAI-PLANET"

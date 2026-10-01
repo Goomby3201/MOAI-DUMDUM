@@ -13,6 +13,7 @@ while True:
     print(f"Gum-Gum: {player.gum_gum}")
     print(f"Lebende Moai: {game.alive_moai_count()}")
     print(f"Weltkontrolle: {game.world_control}%")
+    print(f"Moai-Gebiet: {game.get_region()}")
 
     print("\nWas möchtest du tun?")
     print("1. Arbeiten")
@@ -41,10 +42,12 @@ while True:
             print("Ungültiger Job.")
 
     elif choice == "2":
+        price = game.get_gum_price()
+
         print("\nGum-Gum kostet $5 pro Stück.")
         amount = int(input("Wie viele? "))
 
-        if player.buy_gum_gum(amount):
+        if player.buy_gum_gum(amount, price):
             print(f"{amount} Gum-Gum gekauft.")
         else:
             print("Nicht genug Geld.")

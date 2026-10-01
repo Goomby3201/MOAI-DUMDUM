@@ -4,8 +4,8 @@ class Player:
         self.money = 20
         self.gum_gum = 0
 
-    def buy_gum_gum(self, amount):
-        price = amount * 5
+    def buy_gum_gum(self, amount, gum_price):
+        price = amount * gum_price
 
         if self.money < price:
             return False
