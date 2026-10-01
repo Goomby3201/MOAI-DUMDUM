@@ -5,8 +5,15 @@ from endings import check_endings
 from save import save_game, load_game
 
 
-player = Player("Larry")
-game = Game(player)
+game = load_game()
+
+if game is None:
+    player = Player("Larry")
+    game = Game(player)
+    print("Neues Spiel gestartet.")
+else:
+    player = game.player
+    print("Spielstand geladen.")
 
 
 while True:
@@ -22,7 +29,9 @@ while True:
     print("2. Gum-Gum kaufen")
     print("3. Dum-Dum füttern")
     print("4. Moai zerstören")
-    print("5. Beenden")
+    print("5. Speichern")
+    print("6. Laden")
+    print("7. Beenden")
 
     choice = input("> ")
 
@@ -69,11 +78,22 @@ while True:
             print("Dieser Moai existiert nicht oder ist bereits zerstört.")
 
     elif choice == "5":
+        save_game(game)
+        print("Spiel gespeichert!")
+
+    elif choice == "6":
+        loaded_game = load_game()
+
+        if loaded_game is None:
+            print("Kein Spielstand gefunden.")
+        else:
+            game = loaded_game
+            player = game.player
+            print("Spielstand geladen!")
+
+    elif choice == "7":
         print("DUM-DUM REMAINS.")
         break
-
-    else:
-        print("Ungültige Auswahl.")
 
     ending = check_endings(game)
 
