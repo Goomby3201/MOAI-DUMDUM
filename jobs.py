@@ -1,3 +1,8 @@
+# Wenn du BarcaCH das jemals siehst
+# Bitte zu den verschiedenen Jobs Mini-Games hinzufügen
+# Hier ist die Grundlage dafür 
+# thx Goomby3201
+
 JOBS = {
     "museum": ("Museum putzen", 3),
     "kisten": ("Kisten tragen", 5),
