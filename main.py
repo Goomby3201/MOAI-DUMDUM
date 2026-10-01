@@ -5,9 +5,14 @@ from game import Game
 player = Player("Larry")
 game = Game(player)
 
-print("DUM-DUM: GUM-GUM")
-print()
+player.buy_gum_gum(2)
 
-print(f"Geld: ${player.money}")
+print(f"Gum-Gum: {player.gum_gum}")
 print(f"Moai: {len(game.moai)}")
-print(f"Erster Moai: #{game.moai[0].id}")
+
+game.feed_moai()
+
+print("Nach dem Fütteren:")
+print(f"Gum-Gum: {player.gum_gum}")
+print(f"Moai: {len(game.moai)}")
+
