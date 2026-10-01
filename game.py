@@ -8,6 +8,11 @@ class Game:
         self.gum_gum_given = 0
         self.world_control = 0
 
+        self.jobs_done = 0
+        self.moai_destroyed = 0
+        self.gum_gum_bought = 0
+        self.saves = 0
+
     def feed_moai(self):
         if self.player.gum_gum <= 0:
             return False

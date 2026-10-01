@@ -18,6 +18,10 @@ def save_game(game):
         "game": {
             "gum_gum_given": game.gum_gum_given,
             "world_control": game.world_control,
+            "jobs_done": game.jobs_done,
+            "moai_destroyed": game.moai_destroyed,
+            "gum_gum_bought": game.gum_gum_bought,
+            "saves": game.saves,
             "moai": [
                 {
                     "id": moai.id,
@@ -49,6 +53,10 @@ def load_game():
     game = Game(player)
     game.gum_gum_given = game_data["gum_gum_given"]
     game.world_control = game_data["world_control"]
+    game.jobs_done = game_data.get("jobs_done", 0)
+    game.moai_destroyed = game_data.get("moai_destroyed", 0)
+    game.gum_gum_bought = game_data.get("gum_gum_bought", 0)
+    game.saves = game_data.get("saves", 0)
 
     game.moai = []
 
