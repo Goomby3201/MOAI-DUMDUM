@@ -6,13 +6,13 @@ player = Player("Larry")
 game = Game(player)
 
 player.money = 50
-player.buy_gum_gum(9)
+player.buy_gum_gum(3)
 
-for _ in range(9):
+for _ in range(3):
     game.feed_moai()
 
 print(f"Moai: {len(game.moai)}")
-print(f"Gum-Gum gegeben: {game.gum_gum_given}")
-print(f"Weltkontrolle: {game.world_control}%")
 
+game.destroy_moai(1)
 
+print(f"Moai #1 alive: {game.moai[0].alive}")

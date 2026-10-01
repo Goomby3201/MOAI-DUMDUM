@@ -22,3 +22,11 @@ class Game:
             self.world_control += 5
 
         return True
+
+    def destroy_moai(self, moai_id):
+        for moai in self.moai:
+            if moai.id == moai_id and moai.alive:
+                moai.destroy()
+                return True
+
+        return False
