@@ -1,18 +1,18 @@
 from player import Player
 from game import Game
 
-# Name can be changed later on
+
 player = Player("Larry")
 game = Game(player)
 
-player.buy_gum_gum(2)
+player.money = 50
+player.buy_gum_gum(9)
 
-print(f"Gum-Gum: {player.gum_gum}")
+for _ in range(9):
+    game.feed_moai()
+
 print(f"Moai: {len(game.moai)}")
+print(f"Gum-Gum gegeben: {game.gum_gum_given}")
+print(f"Weltkontrolle: {game.world_control}%")
 
-game.feed_moai()
-
-print("Nach dem Fütteren:")
-print(f"Gum-Gum: {player.gum_gum}")
-print(f"Moai: {len(game.moai)}")
 
