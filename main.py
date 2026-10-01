@@ -46,7 +46,7 @@ while True:
     elif choice == "2":
         price = game.get_gum_price()
 
-        print("\nGum-Gum kostet $5 pro Stück.")
+        print(f"\nGum-Gum kostet ${price} pro Stück.")
         amount = int(input("Wie viele? "))
 
         if player.buy_gum_gum(amount, price):

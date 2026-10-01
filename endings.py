@@ -5,4 +5,4 @@ def check_endings(game):
     if game.world_control >= 100:
         return "GUM-GUM PLANET"
 
-    return Nonee
+    return None
