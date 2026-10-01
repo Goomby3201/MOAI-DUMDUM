@@ -2,6 +2,7 @@ from player import Player
 from game import Game
 from jobs import do_job
 from endings import check_endings
+from save import save_game, load_game
 
 
 player = Player("Larry")
