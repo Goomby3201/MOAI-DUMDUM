@@ -69,7 +69,25 @@ ACHIEVEMENTS = {
     "all_endings": {
         "name": "I HAVE SEEN EVERYTHING",
         "description": "Schalte alle Endings frei."
-    }
+    },
+    "nice": {
+        "name": "NICE",
+        "description": "Habe genau $67.",
+        "secret": True
+    },
+    
+    "gum_gum_67": {
+    "name": "GUM-GUM NICE",
+    "description": "Habe genau 67 Gum-Gum.",
+    "secret": True
+    },
+
+    "moai_67": {
+        "name": "THE 67TH STONE",
+        "description": "Erzeuge Moai #69.",
+        "secret": True
+    },
+
 }
 
 
@@ -158,6 +176,15 @@ def check_achievements(game):
     if game.saves >= 10:
         unlock_achievement("git_git")
 
+    if player.money == 67:
+        unlock_achievement("nice")
+
+    if player.gum_gum == 67:
+        unlock_achievement("gum_gum_67")
+
+    if len(game.moai) >= 67:
+        unlock_achievement("moai_67")
+
 
 def register_ending(ending):
     unlocked = load_achievements()
@@ -185,11 +212,13 @@ def show_achievements():
 
     for achievement_id, achievement in ACHIEVEMENTS.items():
         if achievement_id in unlocked:
-            status = "✓"
-        else:
-            status = "?"
+            print(f"✓ {achievement['name']} - {achievement['description']}")
+        
+        elif achievement.get("secret", False):
+            print("? ??? - Secret Achievement")
 
-        print(f"{status} {achievement['name']} - {achievement['description']}")
+        else:
+            print(f"? {achievement['name']} - {achievement['description']}")
 
 def register_ending(ending):
     ending_key = f"ending:{ending}"
