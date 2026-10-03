@@ -17,8 +17,4 @@ def check_endings(game):
     if moai >= 1000:
         return "MOAI OVERLOAD"
 
-    # Spieler gibt auf
-    if game.gum_gum_given == 0 and game.alive_moai_count() == 1:
-        return "BORING HUMAN"
-
     return None

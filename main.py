@@ -10,17 +10,52 @@ from achievements import (
     show_achievements
 )
 
+def new_game():
+    name = input("Wie heisst du? ")
 
-game = load_game()
+    player = Player(name)
+    return Game(player)
+
+
+def start_menu():
+    while True:
+        print("\n=== DUM-DUM: GUM-GUM ===")
+        print("1. Neues Spiel")
+        print("2. Spiel laden")
+        print("3. Achievements")
+        print("4. Beenden")
+
+        choice = input("> ")
+
+        if choice == "1":
+            return new_game()
+
+        elif choice == "2":
+            game = load_game()
+
+            if game is None:
+                print("Kein Spielstand gefunden.")
+            else:
+                print("Spielstand geladen.")
+                return game
+
+        elif choice == "3":
+            show_achievements()
+
+        elif choice == "4":
+            print("DUM-DUM REMAINS.")
+            return None
+
+        else:
+            print("Ungültige Auswahl.")
+
+
+game = start_menu()
 
 if game is None:
-    player = Player("Larry")
-    game = Game(player)
-    print("Neues Spiel gestartet.")
-else:
-    player = game.player
-    print("Spielstand geladen.")
+    exit()
 
+player = game.player
 
 while True:
     print("\n=== DUM-DUM: GUM-GUM ===")
